@@ -4,37 +4,35 @@
   <meta charset="UTF-8">
   <title>Login Form</title>
   <style>
-    /* Hide existing user button initially */
-    #existing {
-      display: none;
-    }
+    #existing { display: none; }
   </style>
 </head>
 <body>
   <h1>Login Form</h1>
 
-  <!-- Login Form -->
   <form id="loginForm">
+    <label for="username">Username:</label>
     <input type="text" id="username" placeholder="Username"><br><br>
+
+    <label for="password">Password:</label>
     <input type="password" id="password" placeholder="Password"><br><br>
-    <input type="checkbox" id="checkbox">
-    <label for="checkbox">Remember me.</label><br><br>
+
+    <label for="checkbox">Remember me:</label>
+    <input type="checkbox" id="checkbox"><br><br>
+
     <input type="submit" id="submit" value="Submit">
   </form>
 
   <br>
-  <!-- Existing user login button -->
   <button id="existing">Login as existing user</button>
 
   <script>
-    // DOM elements
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const checkbox = document.getElementById('checkbox');
     const submitBtn = document.getElementById('submit');
     const existingBtn = document.getElementById('existing');
 
-    // Check localStorage on page load
     window.addEventListener('DOMContentLoaded', () => {
       const savedUsername = localStorage.getItem('username');
       const savedPassword = localStorage.getItem('password');
@@ -46,10 +44,8 @@
       }
     });
 
-    // Handle form submission
     submitBtn.addEventListener('click', (e) => {
       e.preventDefault();
-
       const username = usernameInput.value.trim();
       const password = passwordInput.value.trim();
 
@@ -58,10 +54,8 @@
         return;
       }
 
-      // Alert login message
       alert(`Logged in as ${username}`);
 
-      // Remember Me functionality
       if (checkbox.checked) {
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
@@ -73,7 +67,6 @@
       }
     });
 
-    // Handle existing user login
     existingBtn.addEventListener('click', () => {
       const savedUsername = localStorage.getItem('username');
       if (savedUsername) {
