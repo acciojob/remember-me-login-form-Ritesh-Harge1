@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <title>Login Form</title>
   <style>
+    /* Hide existing user button initially */
     #existing {
-      display: none; /* Hidden initially */
+      display: none;
     }
   </style>
 </head>
 <body>
   <h1>Login Form</h1>
+
+  <!-- Login Form -->
   <form id="loginForm">
     <input type="text" id="username" placeholder="Username"><br><br>
     <input type="password" id="password" placeholder="Password"><br><br>
@@ -18,10 +21,13 @@
     <label for="checkbox">Remember me.</label><br><br>
     <input type="submit" id="submit" value="Submit">
   </form>
+
   <br>
+  <!-- Existing user login button -->
   <button id="existing">Login as existing user</button>
 
   <script>
+    // DOM elements
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const checkbox = document.getElementById('checkbox');
@@ -52,8 +58,10 @@
         return;
       }
 
+      // Alert login message
       alert(`Logged in as ${username}`);
 
+      // Remember Me functionality
       if (checkbox.checked) {
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
@@ -65,7 +73,7 @@
       }
     });
 
-    // Handle login as existing user
+    // Handle existing user login
     existingBtn.addEventListener('click', () => {
       const savedUsername = localStorage.getItem('username');
       if (savedUsername) {
